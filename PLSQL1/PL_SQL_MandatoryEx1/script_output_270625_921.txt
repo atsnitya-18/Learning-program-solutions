@@ -1,0 +1,23 @@
+
+1% discount applied to senior citizens.
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.018
+
+VIP status updated for high balance customers.
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.007
+
+Reminder: Loan 101 for Ravi is due on 07-JUL-2025
+Reminder: Loan 103 for Anil is due on 02-JUL-2025
+Reminder: Loan 104 for Meena is due on 22-JUL-2025
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.018
