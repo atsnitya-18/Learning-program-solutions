@@ -19,14 +19,13 @@
     </properties>
 
     <dependencies>
-        <!-- ✅ Spring Core Dependency -->
+    
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>5.3.22</version>
         </dependency>
 
-        <!-- ✅ JUnit for Testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -37,7 +36,6 @@
 
     <build>
         <plugins>
-            <!-- ✅ Compiler Plugin for Java 1.8 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -48,7 +46,6 @@
                 </configuration>
             </plugin>
 
-            <!-- ✅ Exec Plugin to Run Main Class -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>

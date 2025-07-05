@@ -1,16 +1,20 @@
 package com.library.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.library.repository.BookRepository;
 
 public class BookService {
-    private BookRepository bookRepository;
+    private BookRepository bookRepository ;
 
+
+    @Autowired
     public void setBookRepository(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    public void addBook(String title) {
-        System.out.println("BookService: adding book...");
-        bookRepository.saveBook(title);
+    public void displayServiceMessage() {
+        System.out.println("Inside BookService: Using BookRepository to fetch data...");
+        bookRepository.displayRepositoryMessage();
     }
 }
