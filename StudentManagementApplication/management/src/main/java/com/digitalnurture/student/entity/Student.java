@@ -1,15 +1,15 @@
 package com.digitalnurture.student.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
     private String dept;
@@ -23,24 +23,20 @@ public class Student {
     @JsonManagedReference
     private List<Course> courses;
 
-
     public Student() {}
 
-    public Student(Integer id, String name, String dept) {
+    public Student(Long id, String name, String dept) {
         this.id = id;
         this.name = name;
         this.dept = dept;
     }
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
-
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-
     public String getDept() { return dept; }
     public void setDept(String dept) { this.dept = dept; }
-
     public List<Course> getCourses() { return courses; }
     public void setCourses(List<Course> courses) { this.courses = courses; }
 }

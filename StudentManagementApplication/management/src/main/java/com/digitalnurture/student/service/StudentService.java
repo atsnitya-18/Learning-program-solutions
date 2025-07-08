@@ -1,38 +1,28 @@
 package com.digitalnurture.student.service;
 
 import com.digitalnurture.student.entity.Student;
-import com.digitalnurture.student.repository.StudentRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.*;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentService {
 
-    private final StudentRepository studentRepository;
+    @PersistenceContext
+    private EntityManager entityManager;
 
- 
-    public StudentService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
+    public List<Student> getStudentsByDeptAndCourse(String dept, String courseTitle) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Student> query = cb.createQuery(Student.class);
+        Root<Student> student = query.from(Student.class);
+        Join<Object, Object> courses = student.join("courses");
 
-    public Student saveStudent(Student student) {
-        return studentRepository.save(student);
-    }
+        Predicate deptPredicate = cb.equal(student.get("dept"), dept);
+        Predicate coursePredicate = cb.equal(courses.get("title"), courseTitle);
 
- 
-    public List<Student> getAllStudents() {
-        return studentRepository.findAll();
-    }
-
-
-    public Optional<Student> getStudentById(int id) {
-        return studentRepository.findById(id);
-    }
-
-
-    public void deleteStudentById(int id) {
-        studentRepository.deleteById(id);
+        query.select(student).distinct(true).where(cb.and(deptPredicate, coursePredicate));
+        return entityManager.createQuery(query).getResultList();
     }
 }
